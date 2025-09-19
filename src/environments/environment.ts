@@ -1,4 +1,5 @@
+//ng build --configuration=production
 export const environment = {
     production: true,
-    apiUrl: 'http://127.0.0.1:8000/api/v1',
+    apiUrl: 'https://conejosaltando.fun/api/v1',
   };
