@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class PerfilService {
-  private baseUrl = 'https://conejosaltando.fun/api/v1'; // URL base de tu API
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 

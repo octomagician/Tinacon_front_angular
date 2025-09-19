@@ -3,11 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // Importa tus interfaces (modelos) si las tienes
 import { User } from '../../Interface/user';
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'https://conejosaltando.fun/api/v1'; // URL base de tu API
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
   // Registro de usuario
