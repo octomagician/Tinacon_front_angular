@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="py-5"> 
   <!-- Sección de Beneficios -->
   <div class="benefits-section py-5 bg-gradient-primary">
     <div class="container">
@@ -23,6 +23,47 @@
       </div>
     </ng-template>
   </div>
+
+  <div class="container py-5 my-5">
+      <app-rectangle-rows-new-item>
+        <h5 class="card-title">Nuevo tinaco</h5>
+
+        <!-- Imagen de añadir -->
+        <link rel="stylesheet" href=""/>
+        <a (click)="openModalNuevo()"
+            >
+            <img
+            class="add-image"
+            src="/assets/add.png"
+            alt="Imagen de añadir"
+            width="100"
+            />  
+        </a>
+      </app-rectangle-rows-new-item>
+  </div>
+
+  <app-modal *ngIf="isModalOpen" title="Nuevo tinaco" 
+    (close)="closeModal()" (save)="postTinaco()">
+    <form [formGroup]="tinacoForm">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="Ingresa nombre para el tinaco"
+          formControlName="name" />
+        
+        <div *ngIf="tinacoForm.get('name')?.invalid && tinacoForm.get('name')?.touched"
+          class="text-danger">
+          Un nombre es requerido.
+        </div>
+      </div>
+      
+      <div *ngIf="successMessage" class="alert alert-success mt-2 fade show">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-2 fade show">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </app-modal>
 
   <div class="container justify-content-center d-flex py-5 my-5 p-5" *ngIf="isLoading">
     <app-loading-skeleton></app-loading-skeleton>
